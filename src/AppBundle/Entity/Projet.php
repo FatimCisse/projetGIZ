@@ -85,6 +85,11 @@ class Projet
     private $remarqueStaff;
 
 
+    public function __toString()
+    {
+        return $this->titre;
+    }
+
     /**
      * Get id
      *

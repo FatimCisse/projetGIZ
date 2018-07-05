@@ -24,9 +24,14 @@ class Categorie
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $nom;
+    private $name;
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 
 
     /**
@@ -42,24 +47,24 @@ class Categorie
     /**
      * Set nom
      *
-     * @param string $nom
+     * @param string $name
      *
      * @return Categorie
      */
-    public function setNom($nom)
+    public function setNom($name)
     {
-        $this->nom = $nom;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get name
      *
      * @return string
      */
     public function getNom()
     {
-        return $this->nom;
+        return $this->name;
     }
 }
