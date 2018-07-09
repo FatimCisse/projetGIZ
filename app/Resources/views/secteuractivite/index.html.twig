@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Secteuractivites list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for secteuractivite in secteuractivites %}
+            <tr>
+                <td><a href="{{ path('secteuractivite_show', { 'id': secteuractivite.id }) }}">{{ secteuractivite.id }}</a></td>
+                <td>{{ secteuractivite.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('secteuractivite_show', { 'id': secteuractivite.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

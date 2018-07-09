@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Porteurprojets list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nompme</th>
+                <th>Nomcompletpromoteur</th>
+                <th>Sexe</th>
+                <th>Age</th>
+                <th>Adressepme</th>
+                <th>Region</th>
+                <th>Commune</th>
+                <th>Village</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>Qualifications</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for porteurprojet in porteurprojets %}
+            <tr>
+                <td><a href="{{ path('porteurprojet_show', { 'id': porteurprojet.id }) }}">{{ porteurprojet.id }}</a></td>
+                <td>{{ porteurprojet.nomPme }}</td>
+                <td>{{ porteurprojet.nomCompletPromoteur }}</td>
+                <td>{% if porteurprojet.sexe %}Yes{% else %}No{% endif %}</td>
+                <td>{{ porteurprojet.age }}</td>
+                <td>{{ porteurprojet.adressePme }}</td>
+                <td>{{ porteurprojet.region }}</td>
+                <td>{{ porteurprojet.commune }}</td>
+                <td>{{ porteurprojet.village }}</td>
+                <td>{{ porteurprojet.telephone }}</td>
+                <td>{{ porteurprojet.email }}</td>
+                <td>{{ porteurprojet.qualifications }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('porteurprojet_show', { 'id': porteurprojet.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('porteurprojet_edit', { 'id': porteurprojet.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('porteurprojet_new') }}">Create a new porteurprojet</a>
+        </li>
+    </ul>
+{% endblock %}

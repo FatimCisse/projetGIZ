@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Recrutements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Age</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>Adresseactuel</th>
+                <th>Qualifiations</th>
+                <th>Niveauetude</th>
+                <th>Niveauexperience</th>
+                <th>Statut</th>
+                <th>Pays</th>
+                <th>Typeemploi</th>
+                <th>Besoins</th>
+                <th>Attentes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recrutement in recrutements %}
+            <tr>
+                <td><a href="{{ path('recrutement_show', { 'id': recrutement.id }) }}">{{ recrutement.id }}</a></td>
+                <td>{{ recrutement.nom }}</td>
+                <td>{{ recrutement.prenom }}</td>
+                <td>{% if recrutement.sexe %}Yes{% else %}No{% endif %}</td>
+                <td>{{ recrutement.age }}</td>
+                <td>{{ recrutement.telephone }}</td>
+                <td>{{ recrutement.email }}</td>
+                <td>{{ recrutement.adresseactuel }}</td>
+                <td>{{ recrutement.qualifiations }}</td>
+                <td>{{ recrutement.niveauEtude }}</td>
+                <td>{{ recrutement.niveauExperience }}</td>
+                <td>{{ recrutement.statut }}</td>
+                <td>{{ recrutement.pays }}</td>
+                <td>{{ recrutement.typeEmploi }}</td>
+                <td>{{ recrutement.besoins }}</td>
+                <td>{{ recrutement.attentes }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('recrutement_show', { 'id': recrutement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('recrutement_edit', { 'id': recrutement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('recrutement_new') }}">Create a new recrutement</a>
+        </li>
+    </ul>
+{% endblock %}

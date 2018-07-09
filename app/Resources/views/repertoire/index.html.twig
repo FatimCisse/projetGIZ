@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Repertoires list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Age</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Adresseactuel</th>
+                <th>Region</th>
+                <th>Commune</th>
+                <th>Datereceptiondossier</th>
+                <th>Observations</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for repertoire in repertoires %}
+            <tr>
+                <td><a href="{{ path('repertoire_show', { 'id': repertoire.id }) }}">{{ repertoire.id }}</a></td>
+                <td>{{ repertoire.nom }}</td>
+                <td>{{ repertoire.prenom }}</td>
+                <td>{% if repertoire.sexe %}Yes{% else %}No{% endif %}</td>
+                <td>{{ repertoire.age }}</td>
+                <td>{{ repertoire.contact }}</td>
+                <td>{{ repertoire.email }}</td>
+                <td>{{ repertoire.adresseactuel }}</td>
+                <td>{{ repertoire.region }}</td>
+                <td>{{ repertoire.commune }}</td>
+                <td>{% if repertoire.datereceptiondossier %}{{ repertoire.datereceptiondossier|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ repertoire.observations }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('repertoire_show', { 'id': repertoire.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('repertoire_edit', { 'id': repertoire.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('repertoire_new') }}">Create a new repertoire</a>
+        </li>
+    </ul>
+{% endblock %}

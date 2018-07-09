@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Domaineinterventions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for domaineintervention in domaineinterventions %}
+            <tr>
+                <td><a href="{{ path('domaineintervention_show', { 'id': domaineintervention.id }) }}">{{ domaineintervention.id }}</a></td>
+                <td>{{ domaineintervention.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('domaineintervention_show', { 'id': domaineintervention.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('domaineintervention_edit', { 'id': domaineintervention.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('domaineintervention_new') }}">Create a new domaineintervention</a>
+        </li>
+    </ul>
+{% endblock %}

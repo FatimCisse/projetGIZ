@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Repertoire</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ repertoire.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ repertoire.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ repertoire.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{% if repertoire.sexe %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ repertoire.age }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ repertoire.contact }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ repertoire.email }}</td>
+            </tr>
+            <tr>
+                <th>Adresseactuel</th>
+                <td>{{ repertoire.adresseactuel }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ repertoire.region }}</td>
+            </tr>
+            <tr>
+                <th>Commune</th>
+                <td>{{ repertoire.commune }}</td>
+            </tr>
+            <tr>
+                <th>Datereceptiondossier</th>
+                <td>{% if repertoire.datereceptiondossier %}{{ repertoire.datereceptiondossier|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Observations</th>
+                <td>{{ repertoire.observations }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('repertoire_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('repertoire_edit', { 'id': repertoire.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
